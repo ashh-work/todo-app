@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-panel" aria-labelledby="app-title">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Task Manager</p>
+            <h1 id="app-title">Todo List</h1>
+          </div>
+          <p class="task-count" id="task-count">0 active</p>
+        </header>
+
+        <form class="todo-form" id="todo-form" autocomplete="off">
+          <label class="sr-only" for="todo-input">New task</label>
+          <input
+            id="todo-input"
+            name="todo"
+            type="text"
+            maxlength="120"
+            placeholder="Add a task"
+            required
+          />
+          <button type="submit">Add</button>
+        </form>
+
+        <div class="toolbar" aria-label="Task filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="active">Active</button>
+          <button class="filter-button" type="button" data-filter="completed">Completed</button>
+        </div>
+
+        <ul class="todo-list" id="todo-list" aria-live="polite"></ul>
+
+        <footer class="footer-actions">
+          <button class="text-button" type="button" id="clear-completed">Clear completed</button>
+        </footer>
+      </section>
+    </main>
+
+    <template id="todo-template">
+      <li class="todo-item">
+        <label class="check-wrap">
+          <input class="todo-toggle" type="checkbox" />
+          <span class="custom-check" aria-hidden="true"></span>
+        </label>
+        <div class="todo-content">
+          <span class="todo-title"></span>
+          <form class="edit-form" hidden>
+            <label class="sr-only">Edit task</label>
+            <input class="edit-input" type="text" maxlength="120" required />
+          </form>
+        </div>
+        <div class="item-actions">
+          <button class="icon-button edit-button" type="button" aria-label="Edit task" title="Edit">Edit</button>
+          <button class="icon-button delete-button" type="button" aria-label="Delete task" title="Delete">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
